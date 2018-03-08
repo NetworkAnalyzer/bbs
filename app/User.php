@@ -3,11 +3,18 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    // ユーザの投稿を取得する
+    public function getPosts()
+    {
+        return $this->hasMany('App\Post');
+    }
 
     /**
      * The attributes that are mass assignable.

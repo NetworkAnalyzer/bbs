@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,7 +26,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+    //indexに移動
+    protected $redirectTo = '/index';
 
     /**
      * Create a new controller instance.
@@ -36,4 +39,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // Emailの代わりにUsernameを使う
+    public function username()
+    {
+        return 'name';
+    }
+
+    /* ログインしているユーザを取得する
+     * $user = Auth::user();
+     * dd($user);
+     */
 }
