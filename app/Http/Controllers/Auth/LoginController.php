@@ -27,7 +27,7 @@ class LoginController extends Controller
      * @var string
      */
 
-    //indexに移動
+    // indexに移動
     protected $redirectTo = '/index';
 
     /**
@@ -45,9 +45,4 @@ class LoginController extends Controller
     {
         return 'name';
     }
-
-    /* ログインしているユーザを取得する
-     * $user = Auth::user();
-     * dd($user);
-     */
 }

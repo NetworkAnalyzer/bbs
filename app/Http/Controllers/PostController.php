@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -23,24 +21,21 @@ class PostController extends Controller
         //テーブルpostsから全レコードを取得する ページネーションを実装
         $posts = DB::table('posts')->orderBy('id','desc')->paginate(10);
 
-        $users = DB::table('users');
-        // dd($users);
         /*
-        $user  = User::find(1);     // id = 1 のユーザ情報を取得
-        //dd($user);                // 取得できた
-        $posts = $user->getPosts;   // user_id = 1 の投稿を取得
-        dd($posts);
-        */
+         * $user  = User::find(1);     // id = 1 のユーザ情報を取得
+         * //dd($user);                // 取得できた
+         * $posts = $user->getPosts;   // user_id = 1 の投稿を取得
+         * dd($posts);
+         */
 
         /*
-         *
-          投稿からユーザ名を取得する
-        $post = Post::find(27);
-        $user = $post->getUser;
-        dd($user);
-        */
+         * 投稿からユーザ名を取得する
+         * $post = Post::find(27);
+         * $user = $post->getUser;
+         * dd($user);
+         */
 
-        return view('index', ['posts' => $posts,'users' => $users]);
+        return view('index', ['posts' => $posts]);
     }
 
     // 新規投稿画面の表示
@@ -58,15 +53,16 @@ class PostController extends Controller
          *    成功した場合，通常通り次の処理が行われる
          */
         $request->validate([
-            // bailを設定すると，ルールを左から順に確かめて満たさないルールが見つかった時点で判定を止める
-            // 入力を必須にする required
-            // ユーザ名を重複させない unique:posts
+            /*
+             *  bailを設定すると，ルールを左から順に確かめて満たさないルールが見つかった時点で判定を止める
+             *  入力を必須にする required
+             *  ユーザ名を重複させない unique:posts
+             */
             'title' => 'bail|required|max:16',
             'content' => 'required',
         ]);
 
         $post = new Post;
-        // id → user_id
         $post->user_id  = Auth::user()->id;
         $post->title    = $request->get('title');
         $post->content  = $request->get('content');
