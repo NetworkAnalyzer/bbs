@@ -27,6 +27,9 @@
                 <span>{{ $post->content }}</span>
             </div>
             <div class="post-footer form-inline">
+                <div>
+                    {{ link_to('#',$tag,['class' => 'label label-default']) }}
+                </div>
 
                 @can('edit', $post)
                     {{ link_to_action('PostController@edit',   ' -編集-',['id' => $post->id]) }}

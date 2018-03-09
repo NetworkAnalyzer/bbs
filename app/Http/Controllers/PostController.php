@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -53,7 +54,9 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        return view('show',['post' => $post]);
+        $tag = Post::find($id)->tagq()->first()->name;
+
+        return view('show',['post' => $post,'tag' => $tag]);
     }
 
     // 編集画面の表示
