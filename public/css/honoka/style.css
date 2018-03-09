@@ -1,0 +1,53 @@
+/* 投稿フォーム ----------------------------------------------------------*/
+.well {
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-bottom: 2px solid #eee;
+    border-radius: 0px;
+}
+
+/* 投稿一覧 -------------------------------------------------------------*/
+.jumbotron {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+    border-bottom: 2px solid #eee;
+    color: inherit;
+    background-color: #fff;
+}
+.jumbotron h1,
+.jumbotron .h1 {
+    /*color: inherit;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size : 25px;
+}
+.jumbotron p {
+    margin-bottom: 0px;
+    font-size: 17px;
+    font-weight: 200;
+}
+.container .jumbotron, .container-fluid .jumbotron {
+    padding-right: 25px;
+    padding-left: 25px;
+    border-radius: 0px;
+}
+.jumbotron button{
+    margin: 15px 0;
+}
+
+/* コメント -------------------------------------------------------------*/
+blockquote {
+    padding: 10px 15px;
+    margin: 10px 0 24px;
+    font-size: 15px;
+    border-left: 5px solid #fff;
+}
+blockquote h2{
+    font-size : 17px;
+    margin-top : 0;
+}
+
+.btn p{
+    margin-bottom: 0;
+}

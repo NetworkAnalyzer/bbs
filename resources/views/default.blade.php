@@ -20,26 +20,36 @@
 
 <body>
 
-    <header class="header">
-      <div class="col-xs-10 col-xs-offset-1">
-            <h1>{{ link_to('index','BBS') }}</h1>
-        </div>
-    </header>
-
+<header>
     <div class="col-xs-10 col-xs-offset-1">
-
-        <div class="headline">
-            <h2>@yield('headline')</h2>
+        <div class="navbar-header">
+                <a href="/" class="site-title">BBS</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li>{{ link_to('/index', 'Top') }}</li>
+                    <li>{{ link_to('/user', 'Username') }}</li>
+                    <li>{{ link_to('/login', 'Logout') }}</li>
+                    <li>{{ link_to('/post', '投稿する') }}</li>
+                </ul>
+            </div>
         </div>
+</header>
 
-        {{-- @section('content')〜@endsectionまでが挿入される --}}
-        @yield('content')
+<div class="col-xs-10 col-xs-offset-1">
 
+    <div class="headline">
+        <h2>@yield('headline')</h2>
     </div>
 
-    <div id="footer">
+    {{-- @section('content')〜@endsectionまでが挿入される --}}
+    @yield('content')
 
-    </div>
+</div>
+
+<div id="footer">
+
+</div>
 
 </body>
 

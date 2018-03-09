@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     // ユーザは複数の投稿をもつ
-    public function getUser()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }

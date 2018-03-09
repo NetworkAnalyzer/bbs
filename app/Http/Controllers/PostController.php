@@ -21,20 +21,6 @@ class PostController extends Controller
         //テーブルpostsから全レコードを取得する ページネーションを実装
         $posts = DB::table('posts')->orderBy('id','desc')->paginate(10);
 
-        /*
-         * $user  = User::find(1);     // id = 1 のユーザ情報を取得
-         * //dd($user);                // 取得できた
-         * $posts = $user->getPosts;   // user_id = 1 の投稿を取得
-         * dd($posts);
-         */
-
-        /*
-         * 投稿からユーザ名を取得する
-         * $post = Post::find(27);
-         * $user = $post->getUser;
-         * dd($user);
-         */
-
         return view('index', ['posts' => $posts]);
     }
 
@@ -47,17 +33,7 @@ class PostController extends Controller
     // 投稿をデータベースに保存
     public function store(Request $request)
     {
-        /*
-         *  validateメソッドにバリデーションルールを与えると
-         *    失敗した場合，適切な処理(今回は以前のページへリダイレクト)が自動的に生成される
-         *    成功した場合，通常通り次の処理が行われる
-         */
         $request->validate([
-            /*
-             *  bailを設定すると，ルールを左から順に確かめて満たさないルールが見つかった時点で判定を止める
-             *  入力を必須にする required
-             *  ユーザ名を重複させない unique:posts
-             */
             'title' => 'bail|required|max:16',
             'content' => 'required',
         ]);
@@ -84,10 +60,6 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        /*
-         *  コントローラで認可するとき
-         *  $this->authorize('edit', $post);
-         */
         return view('edit',['post' => $post]);
     }
 

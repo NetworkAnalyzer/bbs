@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable;
 
     // ユーザの投稿を取得する
-    public function getPosts()
+    public function posts()
     {
         return $this->hasMany('App\Post');
     }

@@ -37,6 +37,10 @@ body{
 .header a {
     color: #dc3545;
 }
+.site-title{
+    padding: 15px 0;
+    font-size: 30px;
+}
 
 h2 {
     font-size : 30px;

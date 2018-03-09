@@ -3,17 +3,31 @@
 @extends('default')
 
 @section('title')
-    BBS -投稿一覧-
+    BBS -マイページ-
 @endsection
 
 @section('content')
 
     @section('headline')
-        投稿一覧
+        {{ Auth::user()->name }}
     @endsection
 
+    <div class="form-group">
+        {{ link_to('/post', '投稿する', ['class' => 'btn btn-primary']) }}
+    </div>
+
     <div class="post-list">
-         <!-- 投稿の表示 -->
+        <div>
+            <p>ユーザ情報</p>
+            <p>ユーザID：{{ $user->id }}</p>
+            <p>ユーザ名：{{ $user->email }}</p>
+        </div>
+
+        <div class="headline" style="">
+            <h2>投稿一覧</h2>
+        </div>
+
+        <!-- 投稿の表示 -->
         @foreach($posts as $post)
             <div class="post-part">
                 <div class="post-head">
