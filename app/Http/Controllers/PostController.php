@@ -39,11 +39,19 @@ class PostController extends Controller
             'content' => 'required',
         ]);
 
+        // postsに保存
         $post = new Post;
         $post->user_id  = Auth::user()->id;
         $post->title    = $request->get('title');
         $post->content  = $request->get('content');
         $post->save();
+
+        // ラジオボタンからタグを取得
+        $tag = $request->get('select_tag');
+
+        // 中間テーブルに保存
+        $post = Post::all()->last();
+        $post->tag()->attach($tag);
 
         // 投稿一覧に戻る
         return redirect()->route('index');

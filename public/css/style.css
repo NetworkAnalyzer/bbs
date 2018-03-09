@@ -127,6 +127,9 @@ h2:after{
 .post-content{
     font-size:17px;
 }
+.radio{
+    font-size: 15px;
+}
 
 /* 削除ボタン ----------------------------------------------------------------*/
 .delete-btn{
