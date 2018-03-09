@@ -28,7 +28,7 @@
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
                     <li>{{ link_to('/index', 'Top') }}</li>
-                    <li>{{ link_to('/user', 'Username') }}</li>
+                    <li>{{ link_to('/user',  Auth::user()->name) }}</li>
                     <li>{{ link_to('/login', 'Logout') }}</li>
                     <li>{{ link_to('/post', '投稿する') }}</li>
                 </ul>

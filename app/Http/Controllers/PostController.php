@@ -54,7 +54,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        $tag = Post::find($id)->tagq()->first()->name;
+        $tag = Post::find($id)->tag()->first()->name;
 
         return view('show',['post' => $post,'tag' => $tag]);
     }
