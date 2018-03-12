@@ -48,7 +48,6 @@ class PostController extends Controller
 
         // チェックボックスからタグを取得
         $tags = $request->get('select-tag');
-        dd($tags);
 
         // タグを保存
         $post = Post::all()->last();
@@ -106,6 +105,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+
+        // タグの削除
+        $post->tags()->detach();
+
+        // 投稿の削除
         $post->delete();
 
         return redirect()->route('index');
