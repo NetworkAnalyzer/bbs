@@ -18,9 +18,30 @@
 
     <div class="post-list">
         <div>
-            <p>ユーザ情報</p>
-            <p>ユーザID：{{ $user->id }}</p>
-            <p>ユーザ名：{{ $user->email }}</p>
+            <table class="table table-stripedgit ">
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>ユーザID</td>
+                    <td>{{ $user->id }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>ユーザ名</td>
+                    <td>{{ $user->email }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>作成日</td>
+                    <td>{{ $user->created_at }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>更新日</td>
+                    <td>{{ $user->updated_at }}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
         <div class="headline" style="">
