@@ -44,7 +44,7 @@
 
         <!-- タグ -->
         <div class="form-group post-content">
-            <div class="form-headline">タグ</div>
+            <div class="form-headline">タグ&nbsp;</div>
             {{Form::checkbox('select-tag[]', '1')}}<span style="font-size: 15px;">&nbsp;うどん</span><br/>
             {{Form::checkbox('select-tag[]', '2')}}<span style="font-size: 15px;">&nbsp;そば</span><br/>
             {{Form::checkbox('select-tag[]', '3')}}<span style="font-size: 15px;">&nbsp;ラーメン</span><br/>
