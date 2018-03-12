@@ -19,8 +19,8 @@ class PostController extends Controller
     // 投稿一覧の表示
     public function index()
     {
-        //テーブルpostsから全レコードを取得する ページネーションを実装
-        $posts = DB::table('posts')->orderBy('id','desc')->paginate(10);
+        //テーブルpostsから全レコードをIDの降順で取得する ページネーションを実装
+        $posts = Post::orderBy('id', 'desc')->paginate(10);
 
         return view('index', ['posts' => $posts]);
     }

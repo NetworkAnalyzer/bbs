@@ -25,16 +25,23 @@
                     <span>{{ $post->content }}</span>
                 </div>
                 <div class="post-footer form-inline">
-                    {{ link_to_action('PostController@show', '詳細を見る',['id' => $post->id]) }}
+                    <div>
+                        @foreach($post->tags as $tag)
+                            {{ link_to('/tag/'.$tag->id,$tag->name,['tag' => $tag,'class' => 'label label-default']) }}
+                        @endforeach
+                    </div>
+                    <div>
+                        {{ link_to_action('PostController@show', '詳細を見る',['id' => $post->id]) }}
+                    </div>
+                    <div>
+                        @can('edit', $post)
+                            {{ link_to_action('PostController@edit',   ' -編集-',['id' => $post->id]) }}
 
-                    @can('edit', $post)
-                        {{ link_to_action('PostController@edit',   ' -編集-',['id' => $post->id]) }}
-
-                        {{ Form::open(['url' => '/post/'.$post->id, 'method' => 'delete'],['class' => 'form-inline']) }}
-                        <input type="submit" value="-削除-" class="delete-btn form-inline">
-                        {{ Form::close() }}
-                    @endcan
-
+                            {{ Form::open(['url' => '/post/'.$post->id, 'method' => 'delete'],['class' => 'form-inline']) }}
+                            <input type="submit" value="-削除-" class="delete-btn form-inline">
+                            {{ Form::close() }}
+                        @endcan
+                    </div>
                 </div>
             </div>
         @endforeach
