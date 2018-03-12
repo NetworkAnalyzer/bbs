@@ -33,9 +33,6 @@
                     @endforeach
                 </div>
                 <div>
-                    {{ link_to_action('PostController@show', '詳細を見る',['id' => $post->id]) }}
-                </div>
-                <div>
                     @can('edit', $post)
                         {{ link_to_action('PostController@edit',   ' -編集-',['id' => $post->id]) }}
 
