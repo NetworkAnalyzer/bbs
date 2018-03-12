@@ -28,7 +28,9 @@
             </div>
             <div class="post-footer form-inline">
                 <div>
-                    {{ link_to('#',$tag,['class' => 'label label-default']) }}
+                    @foreach($post->tags as $tag)
+                        {{ link_to('#',$tag->name,['class' => 'label label-default']) }}
+                    @endforeach
                 </div>
 
                 @can('edit', $post)

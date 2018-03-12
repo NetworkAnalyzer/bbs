@@ -39,19 +39,19 @@ class PostController extends Controller
             'content' => 'required',
         ]);
 
-        // postsに保存
+        // 投稿内容を保存
         $post = new Post;
         $post->user_id  = Auth::user()->id;
         $post->title    = $request->get('title');
         $post->content  = $request->get('content');
         $post->save();
 
-        // ラジオボタンからタグを取得
-        $tag = $request->get('select_tag');
+        // チェックボックスからタグを取得
+        $tags = $request->get('select-tag');
 
-        // 中間テーブルに保存
+        // タグを保存
         $post = Post::all()->last();
-        $post->tag()->attach($tag);
+        $post->tags()->attach($tags);
 
         // 投稿一覧に戻る
         return redirect()->route('index');
@@ -62,9 +62,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        $tag = Post::find($id)->tag()->first()->name;
-
-        return view('show',['post' => $post,'tag' => $tag]);
+        return view('show',['post' => $post]);
     }
 
     // 編集画面の表示

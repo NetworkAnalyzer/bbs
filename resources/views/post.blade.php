@@ -45,10 +45,10 @@
         <!-- タグ -->
         <div class="form-group post-content">
             <div class="form-headline">タグ&nbsp;<span class="label label-danger">必須</span></div>
-            {{ Form::radio('select_tag','1',true) }}<span style="font-size: 15px;">うどん</span><br/>
-            {{ Form::radio('select_tag','2') }}<span style="font-size: 15px;">そば</span><br/>
-            {{ Form::radio('select_tag','3') }}<span style="font-size: 15px;">ラーメン</span><br/>
-            {{ Form::radio('select_tag','4') }}<span style="font-size: 15px;">フォー</span>
+            {{Form::checkbox('select-tag[]', '1')}}<span style="font-size: 15px;">&nbsp;うどん</span><br/>
+            {{Form::checkbox('select-tag[]', '2')}}<span style="font-size: 15px;">&nbsp;そば</span><br/>
+            {{Form::checkbox('select-tag[]', '3')}}<span style="font-size: 15px;">&nbsp;ラーメン</span><br/>
+            {{Form::checkbox('select-tag[]', '4')}}<span style="font-size: 15px;">&nbsp;フォー</span><br/>
         </div>
 
         <!-- 投稿ボタン -->
