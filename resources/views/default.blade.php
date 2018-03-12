@@ -23,7 +23,7 @@
 <header>
     <div class="col-xs-10 col-xs-offset-1">
         <div class="navbar-header">
-                <a href="/" class="site-title">BBS</a>
+                <a href="/index" class="site-title">BBS</a>
             </div>
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
@@ -31,6 +31,7 @@
                     <li>{{ link_to('/user',  Auth::user()->name) }}</li>
                     <li>{{ link_to('/login', 'Logout') }}</li>
                     <li>{{ link_to('/post', '投稿する') }}</li>
+                    <li>{{ link_to('/tag', 'タグ') }}</li>
                 </ul>
             </div>
         </div>

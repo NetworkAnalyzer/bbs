@@ -114,4 +114,18 @@ class PostController extends Controller
 
         return redirect()->route('index');
     }
+
+    public function search($tag)
+    {
+        $posts = Tag::find($tag)->posts()->paginate(10);
+
+        return view('tag',['posts' => $posts]);
+    }
+
+    public function tag()
+    {
+        $tags = Tag::all();
+
+        return view('tag-list',['tags' => $tags]);
+    }
 }

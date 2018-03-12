@@ -29,7 +29,7 @@
             <div class="post-footer form-inline">
                 <div>
                     @foreach($post->tags as $tag)
-                        {{ link_to('#',$tag->name,['class' => 'label label-default']) }}
+                        {{ link_to('/tag/'.$tag->id,$tag->name,['tag' => $tag,'class' => 'label label-default']) }}
                     @endforeach
                 </div>
 

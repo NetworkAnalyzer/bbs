@@ -18,6 +18,12 @@ Route::put('/post/{id}','PostController@update');
 // 投稿の削除
 Route::delete('/post/{id}','PostController@destroy');
 
+// タグ一覧
+Route::get('/tag','PostController@tag');
+
+// タグ検索
+Route::get('/tag/{id}','PostController@search');
+
 // マイページ
 Route::get('/user','UserController@index')->name('user');
 
