@@ -19,7 +19,7 @@
     <div class="post-part">
         {{ Form::open(['url' => '/post/'.$post->id, 'method' => 'put']) }}
 
-            <!-- ユーザ名 -->
+        <!-- ユーザ名 -->
             <div class="form-group post-title">
                 <div class="form-headline">タイトル&nbsp;<span class="label label-danger">必須</span></div>
                 {{ Form::text('title',$post->title,['class' => 'form-control','placeholder' => 'タイトルを入力してください']) }}
@@ -41,29 +41,12 @@
                 @endif
             </div>
 
-            <div class="form-group post-content">
-                <!-- 現在のタグ -->
-                <div class="form-headline">現在のタグ</div>
-                @foreach($names as $name)
-                    {{ link_to('#',$name,['class' => 'label label-default']) }}
-                @endforeach
-
-                <!-- タグ -->
-                <div class="form-group post-content">
-                    <div class="form-headline">タグ</div>
-                    {{Form::checkbox('select-tag[]', '1')}}<span style="font-size: 15px;">&nbsp;うどん</span><br/>
-                    {{Form::checkbox('select-tag[]', '2')}}<span style="font-size: 15px;">&nbsp;そば</span><br/>
-                    {{Form::checkbox('select-tag[]', '3')}}<span style="font-size: 15px;">&nbsp;ラーメン</span><br/>
-                    {{Form::checkbox('select-tag[]', '4')}}<span style="font-size: 15px;">&nbsp;フォー</span><br/>
-                </div>
-            </div>
-
             <!-- 投稿ボタン -->
             <div class="form-group">
                 {{ Form::submit('更新する', ['class' => 'btn btn-primary']) }}
             </div>
 
-        {{ Form::close() }}
+            {{ Form::close() }}
 
     </div>
 

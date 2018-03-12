@@ -48,7 +48,6 @@ class PostController extends Controller
 
         // チェックボックスからタグを取得
         $tags = $request->get('select-tag');
-        dd($tags);
 
         // タグを保存
         $post = Post::all()->last();
@@ -70,10 +69,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-
-        $tags = $post->tags;
-
-        return view('edit',['post' => $post,'tags' => $tags]);
+        return view('edit',['post' => $post]);
     }
 
     // 編集結果をデータベースに保存
@@ -82,7 +78,7 @@ class PostController extends Controller
         $validatedData = $request->validate([
             // username や content はinputやtextareaのname
             'title'   => 'bail|required|max:16',
-            'content' => 'required|max:255',
+            'content' => 'required',
         ]);
 
         $post = Post::find($id);
@@ -90,13 +86,6 @@ class PostController extends Controller
         $post->title    = $request->get('title');
         $post->content  = $request->get('content');
         $post->save();
-
-        // タグ情報を取得
-        $tags = $request->get('select-tag');
-
-        // タグを更新する
-        $post = Post::find($id);
-        $post->tags()->sync($tags);
 
         // 投稿一覧に戻る
         return redirect()->route('index');
