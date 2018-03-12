@@ -36,7 +36,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'bail|required|max:16',
-            'content' => 'required',
+            'content' => 'required|max:255',
         ]);
 
         // 投稿内容を保存
