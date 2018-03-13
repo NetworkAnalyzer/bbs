@@ -6,7 +6,6 @@ use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -80,7 +79,7 @@ class PostController extends Controller
     // 編集結果をデータベースに保存
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             // username や content はinputやtextareaのname
             'title'   => 'bail|required|max:16',
             'content' => 'required|max:255',
