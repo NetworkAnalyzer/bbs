@@ -24,6 +24,10 @@
         <div class="form-group post-title">
             <div class="form-headline">タグ名&nbsp;<span class="label label-danger">必須</span></div>
             {{ Form::text('name','',['class' => 'form-control','placeholder' => 'タグ名を入力してください']) }}
+
+            @if ($errors->has('name'))
+                <span class="error-message">{{ $errors->first('name') }}</span>
+            @endif
         </div>
 
         <!-- 投稿ボタン -->
