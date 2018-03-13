@@ -45,7 +45,7 @@
                 <!-- 現在のタグ -->
                 <div class="form-headline">現在のタグ</div>
                 @foreach($post->tags as $tag)
-                    {{ link_to('#',$tag->name,['class' => 'label label-default']) }}
+                    {{ link_to('/tag/'.$tag->id,$tag->name,['class' => 'label label-default']) }}
                 @endforeach
 
                 <!-- タグ -->
