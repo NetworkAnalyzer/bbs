@@ -24,6 +24,7 @@
             <th></th>
             <th>タグID</th>
             <th>タグ名</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +33,12 @@
                 <th scope="row">1</th>
                 <td>{{ $tag->id }}</td>
                 <td>{{ link_to_action('TagController@search',$tag->name,['tag' => $tag],['class' => 'label label-default']) }}</td>
+                <td>
+                    {{ link_to_action('TagController@edit',' -編集-',['id' => $tag->id]) }}
+                    {{ Form::open(['url' => '/tag/'.$tag->id, 'method' => 'delete'],['class' => 'form-inline']) }}
+                    <input type="submit" value="-削除-" class="delete-btn form-inline">
+                    {{ Form::close() }}
+                </td>
             </tr>
         @endforeach
         </tbody>

@@ -39,4 +39,37 @@ class TagController extends Controller
 
         return redirect()->route('tag-index');
     }
+
+    public function edit($id)
+    {
+        $tag = Tag::find($id);
+
+        return view('tag-edit',['tag' => $tag]);
+    }
+
+    public function update(Request $request,$id)
+    {
+        $request->validate([
+            'name' => 'bail|required|max:16|unique:tags',
+        ]);
+
+        $tag = Tag::find($id);
+        $tag->name = $request->name;
+        $tag->save();
+
+        return redirect()->route('tag-index');
+    }
+
+    public function destroy($id)
+    {
+        $tag = Tag::find($id);
+
+        // タグを外す
+        $tag->posts()->detach();
+
+        // タグを削除
+        $tag->delete();
+
+        return redirect()->route('tag-index');
+    }
 }

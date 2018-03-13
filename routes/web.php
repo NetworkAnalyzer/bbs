@@ -30,6 +30,13 @@ Route::get('/tag/{id}','TagController@search');
 Route::get('/tag-create','TagController@create');
 Route::post('/tag-create','TagController@store');
 
+// タグ編集
+Route::get('/tag/{id}/edit','TagController@edit');
+Route::put('/tag/{id}','TagController@update');
+
+// タグ削除
+Route::delete('/tag/{id}','TagController@destroy');
+
 // マイページ
 Route::get('/user','UserController@index')->name('user');
 
