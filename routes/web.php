@@ -18,11 +18,17 @@ Route::put('/post/{id}','PostController@update');
 // 投稿の削除
 Route::delete('/post/{id}','PostController@destroy');
 
+/* タグ -----------------------------------------------------------*/
+
 // タグ一覧
-Route::get('/tag','TagController@index');
+Route::get('/tag','TagController@index')->name('tag-index');
 
 // タグ検索
 Route::get('/tag/{id}','TagController@search');
+
+// タグ作成
+Route::get('/tag-create','TagController@create');
+Route::post('/tag-create','TagController@store');
 
 // マイページ
 Route::get('/user','UserController@index')->name('user');

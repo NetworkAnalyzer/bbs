@@ -12,13 +12,28 @@ class TagController extends Controller
     {
         $tags = Tag::all();
 
-        return view('tag-list',['tags' => $tags]);
+        return view('tag-index',['tags' => $tags]);
     }
 
     public function search($tag)
     {
         $posts = Tag::find($tag)->posts()->paginate(10);
 
-        return view('tag',['posts' => $posts]);
+        return view('tag-detail',['posts' => $posts]);
+    }
+
+    public function create()
+    {
+        return view('tag-create');
+    }
+
+    public function store(Request $request)
+    {
+        $tag = new Tag;
+
+        $tag->name = $request->name;
+        $tag->save();
+
+        return redirect()->route('tag-index');
     }
 }

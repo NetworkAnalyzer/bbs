@@ -12,6 +12,10 @@
     タグ一覧
 @endsection
 
+<div class="form-group">
+    {{ link_to('/tag-create', '新規タグ', ['class' => 'btn btn-primary']) }}
+</div>
+
 <div class="post-list">
     <!-- 投稿の表示 -->
     <table class="table table-stripedgit ">
