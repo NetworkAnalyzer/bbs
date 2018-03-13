@@ -19,10 +19,10 @@ Route::put('/post/{id}','PostController@update');
 Route::delete('/post/{id}','PostController@destroy');
 
 // タグ一覧
-Route::get('/tag','PostController@tag');
+Route::get('/tag','TagController@index');
 
 // タグ検索
-Route::get('/tag/{id}','PostController@search');
+Route::get('/tag/{id}','TagController@search');
 
 // マイページ
 Route::get('/user','UserController@index')->name('user');

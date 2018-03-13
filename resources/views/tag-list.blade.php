@@ -27,7 +27,7 @@
             <tr>
                 <th scope="row">1</th>
                 <td>{{ $tag->id }}</td>
-                <td>{{ link_to_action('PostController@search',$tag->name,['tag' => $tag],['class' => 'label label-default']) }}</td>
+                <td>{{ link_to_action('TagController@search',$tag->name,['tag' => $tag],['class' => 'label label-default']) }}</td>
             </tr>
         @endforeach
         </tbody>
