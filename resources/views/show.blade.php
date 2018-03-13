@@ -12,11 +12,7 @@
         投稿詳細
     @endsection
 
-    <div class=" form-group">
-        {{ link_to('/post', '投稿する', ['class' => 'btn btn-primary']) }}
-    </div>
-
-    <div class="post-list">
+   <div class="post-list">
 
         <div class="post-part">
             <div class="post-head">
