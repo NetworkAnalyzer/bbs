@@ -15,7 +15,7 @@ class TagController extends Controller
         return view('tag-index',['tags' => $tags]);
     }
 
-    public function search($tag)
+    public function show($tag)
     {
         $posts = Tag::find($tag)->posts()->paginate(10);
 

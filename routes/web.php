@@ -24,7 +24,7 @@ Route::delete('/post/{id}','PostController@destroy');
 Route::get('/tag','TagController@index')->name('tag-index');
 
 // タグ検索
-Route::get('/tag/{id}','TagController@search');
+Route::get('/tag/{id}','TagController@show');
 
 // タグ作成
 Route::get('/tag-create','TagController@create');

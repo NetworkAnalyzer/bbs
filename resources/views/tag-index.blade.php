@@ -32,7 +32,7 @@
             <tr>
                 <th scope="row">1</th>
                 <td>{{ $tag->id }}</td>
-                <td>{{ link_to_action('TagController@search',$tag->name,['tag' => $tag],['class' => 'label label-default']) }}</td>
+                <td>{{ link_to_action('TagController@show',$tag->name,['tag' => $tag],['class' => 'label label-default']) }}</td>
                 <td>
                     {{ link_to_action('TagController@edit',' -編集-',['id' => $tag->id]) }}
                     {{ Form::open(['url' => '/tag/'.$tag->id, 'method' => 'delete'],['class' => 'form-inline']) }}
