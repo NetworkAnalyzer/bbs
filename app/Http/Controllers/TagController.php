@@ -18,8 +18,9 @@ class TagController extends Controller
     public function show($tag)
     {
         $posts = Tag::find($tag)->posts()->paginate(10);
+        $tag = Tag::find($tag);
 
-        return view('tag-detail',['posts' => $posts]);
+        return view('tag-detail',['posts' => $posts,'tag' => $tag]);
     }
 
     public function create()

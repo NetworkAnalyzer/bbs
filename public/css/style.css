@@ -116,6 +116,9 @@ h2:after{
     font-size : 14px;
 
 }
+.post-not-exist{
+    text-align: center;
+}
 
 /* 投稿・編集画面 ------------------------------------------------------------*/
 .form-headline{

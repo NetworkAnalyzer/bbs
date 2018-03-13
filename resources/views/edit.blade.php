@@ -12,11 +12,7 @@
         投稿編集
     @endsection
 
-    <div class="form-group">
-        {{ link_to('/index', '投稿一覧', ['class' => 'btn btn-primary']) }}
-    </div>
-
-    <div class="post-part">
+     <div class="post-part">
         {{ Form::open(['url' => '/post/'.$post->id, 'method' => 'put']) }}
 
             <!-- ユーザ名 -->
@@ -44,9 +40,13 @@
             <div class="form-group post-content">
                 <!-- 現在のタグ -->
                 <div class="form-headline">現在のタグ</div>
-                @foreach($post->tags as $tag)
-                    {{ link_to('/tag/'.$tag->id,$tag->name,['class' => 'label label-default']) }}
-                @endforeach
+                @if($post->tags()->first() == null)
+                    なし
+                @else
+                    @foreach($post->tags as $tag)
+                        {{ link_to('/tag/'.$tag->id,$tag->name,['class' => 'label label-default']) }}
+                    @endforeach
+                @endif
 
                 <!-- タグ -->
                 <div class="form-group post-content">
