@@ -28,7 +28,9 @@ class PostController extends Controller
     // 新規投稿画面の表示
     public function create()
     {
-        return view('post');
+        $tags = Tag::all();
+
+        return view('post',['tags' => $tags]);
     }
 
     // 投稿をデータベースに保存
@@ -70,7 +72,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        $tags = $post->tags;
+        $tags = Tag::all();
 
         return view('edit',['post' => $post,'tags' => $tags]);
     }
