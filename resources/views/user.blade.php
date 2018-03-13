@@ -12,10 +12,6 @@
         {{ Auth::user()->name }}
     @endsection
 
-    <div class="form-group">
-        {{ link_to('/post', '投稿する', ['class' => 'btn btn-primary']) }}
-    </div>
-
     <div class="post-list">
         <div>
             <table class="table table-stripedgit ">
