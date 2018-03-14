@@ -24,6 +24,11 @@
                 <tr>
                     <th scope="row">1</th>
                     <td>ユーザ名</td>
+                    <td>{{ $user->name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>メールアドレス</td>
                     <td>{{ $user->email }}</td>
                 </tr>
                 <tr>
