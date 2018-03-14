@@ -36,14 +36,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'bail|required|max:16',
-            'content' => 'required|max:255',
+             'content' => 'required|max:255',
         ]);
 
         // 投稿内容を保存
         $post = new Post;
         $post->user_id  = Auth::user()->id;
-        $post->title    = $request->get('title');
         $post->content  = $request->get('content');
         $post->save();
 
@@ -80,14 +78,11 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            // username や content はinputやtextareaのname
-            'title'   => 'bail|required|max:16',
             'content' => 'required|max:255',
         ]);
 
         $post = Post::find($id);
         // user_idは更新しない
-        $post->title    = $request->get('title');
         $post->content  = $request->get('content');
         $post->save();
 

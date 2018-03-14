@@ -27,7 +27,7 @@
             <div class="post-part">
                 <div class="post-head">
                     {{-- ユーザ名とユーザIDを表示する --}}
-                    <span class="post-head-left">{{ $post->title }}</span>
+                    <span class="post-head-left">{{ $post->user->name }}</span>
                     <span class="post-head-right">{{ $post->created_at }}</span>
                 </div>
                 <div class="post-body">
