@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
+    // ログインしないと入れないようにする
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     // タグ一覧の表示
     public function index()
     {
