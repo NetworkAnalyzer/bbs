@@ -36,13 +36,14 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-             'content' => 'required|max:255',
+            'content' => 'required|max:255',
         ]);
 
         // 投稿内容を保存
         $post = new Post;
-        $post->user_id  = Auth::user()->id;
-        $post->content  = $request->get('content');
+        $post->user_id   = Auth::user()->id;
+        $post->thread_id = $request->thread;
+        $post->content   = $request->get('content');
         $post->save();
 
         // チェックボックスからタグを取得
@@ -57,17 +58,17 @@ class PostController extends Controller
     }
 
     // 投稿詳細の表示
-    public function show($id)
+    public function show($thread,$post)
     {
-        $post = Post::find($id);
+        $post = Post::find($post);
 
         return view('show',['post' => $post]);
     }
 
     // 編集画面の表示
-    public function edit($id)
+    public function edit($thread,$post)
     {
-        $post = Post::find($id);
+        $post = Post::find($post);
 
         $tags = Tag::all();
 
@@ -98,9 +99,9 @@ class PostController extends Controller
     }
 
     // 投稿の削除
-    public function destroy($id)
+    public function destroy($thread,$post)
     {
-        $post = Post::find($id);
+        $post = Post::find($post);
 
         // タグの削除
         $post->tags()->detach();

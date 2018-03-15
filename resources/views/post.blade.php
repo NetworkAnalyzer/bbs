@@ -37,7 +37,7 @@
             @foreach($tags as $tag)
                 {{Form::checkbox('select-tag[]', $tag->id)}}<span style="font-size: 15px;">&nbsp{{ $tag->name }}</span><br/>
             @endforeach
-         </div>
+        </div>
 
         <!-- 投稿ボタン -->
         <div class="form-group">

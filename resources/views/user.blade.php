@@ -67,13 +67,13 @@
                         @endforeach
                     </div>
                     <div>
-                        {{ link_to_action('PostController@show', '詳細を見る',['id' => $post->id]) }}
+                        {{ link_to_action('PostController@show', '詳細を見る',['thread' => $post->thread,'post' => $post->id]) }}
                     </div>
                     <div>
                         @can('edit', $post)
-                            {{ link_to_action('PostController@edit',   ' -編集-',['id' => $post->id]) }}
+                            {{ link_to_action('PostController@edit',   ' -編集-',['thread' => $post->thread->id,'post' => $post->id]) }}
 
-                            {{ Form::open(['url' => '/post/'.$post->id, 'method' => 'delete'],['class' => 'form-inline']) }}
+                            {{ Form::open(['url' => '/index/'.$post->thread->id.'/'.$post->id, 'method' => 'delete'],['class' => 'form-inline']) }}
                             <input type="submit" value="-削除-" class="delete-btn form-inline">
                             {{ Form::close() }}
                         @endcan
@@ -85,11 +85,6 @@
         <div>
             {{ $posts->links() }}
         </div>
-
-        <div class="form-group">
-            {{ link_to('/post', '投稿する', ['class' => 'btn btn-primary']) }}
-        </div>
-
     </div>
 
 @endsection

@@ -1,28 +1,23 @@
-<!-- タグの検索結果を表示するページ -->
+<!-- 投稿を表示するページ -->
 
 @extends('default')
 
 @section('title')
-    BBS タグ:{{ $tag->name }}
+    BBS -投稿一覧-
+@endsection
+
+@section('post')
+    <li>{{ link_to('/index/'.$posts->first()->thread->id.'/post','投稿する') }}</li>
 @endsection
 
 @section('content')
 
-@section('headline')
-    {{ Form::label('tag-title',$tag->name,['class' => 'label label-default']) }}
-@endsection
+    @section('headline')
+        投稿一覧
+    @endsection
 
-<div class="post-list">
-    <!-- 投稿の表示 -->
-    @if($posts->first() == null)
-        <div class="post-part">
-            <div class="post-head">
-            </div>
-            <div class="post-body post-not-exist">
-                投稿はありません
-            </div>
-        </div>
-    @else
+    <div class="post-list">
+         <!-- 投稿の表示 -->
         @foreach($posts as $post)
             <div class="post-part">
                 <div class="post-head">
@@ -40,7 +35,7 @@
                         @endforeach
                     </div>
                     <div>
-                        {{ link_to_action('PostController@show', '詳細を見る',['thread' => $post->thread,'post' => $post->id]) }}
+                        {{ link_to_action('PostController@show', '詳細を見る',['thread' => $post->thread->id,'post' => $post->id]) }}
                     </div>
                     <div>
                         @can('edit', $post)
@@ -54,12 +49,10 @@
                 </div>
             </div>
         @endforeach
-    @endif
 
-    <div>
-        {{ $posts->links() }}
+        <div>
+            {{ $posts->links() }}
+        </div>
     </div>
-
-</div>
 
 @endsection

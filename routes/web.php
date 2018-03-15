@@ -1,22 +1,24 @@
 <?php
 
-/* 投稿 -----------------------------------------------------------*/
-// 投稿一覧
-Route::get('/index', 'PostController@index')->name('index');
+// スレッド一覧を表示
+Route::get('/index', 'ThreadController@index')->name('index');
+
+// スレッドに属する投稿を表示
+Route::get('/index/{thread}', 'ThreadController@show')->name('post');
 
 // 新規投稿
-Route::get('/post', 'PostController@create')->name('create');
-Route::post('/post', 'PostController@store')->name('post');
+Route::get('/index/{thread}/post', 'PostController@create')->name('post.create');
+Route::post('/index/{thread}/post', 'PostController@store')->name('post.store');
 
 // 投稿詳細
-Route::get('/post/{id}', 'PostController@show');
+Route::get('/index/{thread}/{post}', 'PostController@show');
 
 // 投稿の編集
-Route::get('/post/{id}/edit','PostController@edit');
-Route::put('/post/{id}','PostController@update');
+Route::get('/index/{thread}/{post}/edit','PostController@edit');
+Route::put('/index/{thread}/{post}','PostController@update');
 
 // 投稿の削除
-Route::delete('/post/{id}','PostController@destroy');
+Route::delete('/index/{thread}/{post}','PostController@destroy');
 
 /* タグ -----------------------------------------------------------*/
 
