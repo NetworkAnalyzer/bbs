@@ -35,6 +35,16 @@ class PostController extends Controller
     // 投稿をデータベースに保存
     public function store(Request $request)
     {
+        // 取得したタグ名が文字列で繋がってるから配列に変換
+        $tags = $request->get('tags');      // 文字列だから
+        $tags = explode(",", $tags);    // 配列に変換
+
+        // 既存かどうか確認
+        foreach ($tags as $tag){
+            // タグが存在すれば取得し，存在しなければタグを登録する
+            $ids[] = Tag::firstOrCreate(['name' => $tag])->id;
+        }
+
         $request->validate([
             'content' => 'required|max:255',
         ]);
@@ -46,12 +56,9 @@ class PostController extends Controller
         $post->content   = $request->get('content');
         $post->save();
 
-        // チェックボックスからタグを取得
-        $tags = $request->get('select-tag');
-
         // タグを保存
         $post = Post::all()->last();
-        $post->tags()->attach($tags);
+        $post->tags()->attach($ids);
 
         // 投稿一覧に戻る
         return redirect()->route('index');
@@ -78,6 +85,7 @@ class PostController extends Controller
     // 編集結果をデータベースに保存
     public function update(Request $request, $id)
     {
+
         $request->validate([
             'content' => 'required|max:255',
         ]);
@@ -88,7 +96,7 @@ class PostController extends Controller
         $post->save();
 
         // タグ情報を取得
-        $tags = $request->get('select-tag');
+        $tags = $request->get('tags');
 
         // タグを更新する
         $post = Post::find($id);

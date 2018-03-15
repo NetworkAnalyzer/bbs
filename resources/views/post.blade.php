@@ -34,9 +34,7 @@
         <!-- タグ -->
         <div class="form-group post-content">
             <div class="form-headline">タグ&nbsp;</div>
-            @foreach($tags as $tag)
-                {{Form::checkbox('select-tag[]', $tag->id)}}<span style="font-size: 15px;">&nbsp{{ $tag->name }}</span><br/>
-            @endforeach
+            {{ Form::text('tags','Tags',['id' => 'tag-input']) }}
         </div>
 
         <!-- 投稿ボタン -->
@@ -47,5 +45,15 @@
         {{ Form::close() }}
 
     </div>
+
+<script type="text/javascript">
+    // タグリストはデータベースから取得して作るべき
+    // 同時にタグIDも取得してタグ名と対応させておく
+    var tagList = ["うどん", "そば","ラーメン","フォー","きしめん"];
+    $('#tag-input').tagit({
+        removeConfirmation: true,
+        availableTags: tagList
+    });
+</script>
 
 @endsection

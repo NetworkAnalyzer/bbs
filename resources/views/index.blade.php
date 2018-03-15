@@ -33,4 +33,12 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    var tagList = ["うどん", "そば","ラーメン","フォー","きしめん"];
+    $('#tag-input').tagit({
+        removeConfirmation: true,
+        availableTags: tagList
+    });
+</script>
+
 @endsection
