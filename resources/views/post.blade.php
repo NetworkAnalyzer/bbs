@@ -44,12 +44,14 @@
 
         {{ Form::close() }}
 
+
+
     </div>
 
 <script type="text/javascript">
-    // タグリストはデータベースから取得して作るべき
-    // 同時にタグIDも取得してタグ名と対応させておく
-    var tagList = ["うどん", "そば","ラーメン","フォー","きしめん"];
+    var tagCsv  = "<?php echo $tag_names; ?>";
+    var tagList = tagCsv.split(',');
+
     $('#tag-input').tagit({
         removeConfirmation: true,
         availableTags: tagList

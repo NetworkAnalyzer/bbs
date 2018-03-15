@@ -29,7 +29,13 @@ class PostController extends Controller
     {
         $tags = Tag::all();
 
-        return view('post',['tags' => $tags]);
+        // 補完用
+        foreach ($tags as $tag){
+            $tag_names[] = $tag->name;
+        }
+        $tag_names = implode(",",$tag_names);   //jsに渡すために配列をCSVに変換
+
+        return view('post',['tags' => $tags, 'tag_names' => $tag_names]);
     }
 
     // 投稿をデータベースに保存

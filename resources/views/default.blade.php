@@ -19,7 +19,6 @@
     <link href="{{ asset('/css/jquery.tagit.css') }}" rel="stylesheet" type="text/css">
 
     <title>@yield('title')</title>
-
 </head>
 
 <body>
