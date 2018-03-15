@@ -2,6 +2,7 @@
 
 /* スレッド --------------------------------------------------------*/
 Route::get('/thread', 'ThreadController@index')->name('thread-index');
+Route::get('/thread/{id}', 'ThreadController@show');
 
 /* 投稿 -----------------------------------------------------------*/
 // 投稿一覧

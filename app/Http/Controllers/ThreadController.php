@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\Thread;
 use Illuminate\Http\Request;
 
@@ -20,5 +21,12 @@ class ThreadController extends Controller
         $threads = Thread::orderBy('id', 'desc')->paginate(10);
 
         return view('thread', ['threads' => $threads]);
+    }
+
+    public function show($id)
+    {
+        $posts = Thread::find($id)->posts()->orderBy('id','desc')->paginate(10);
+
+        return view('index',['posts' => $posts]);
     }
 }
