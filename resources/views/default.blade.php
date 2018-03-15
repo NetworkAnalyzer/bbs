@@ -32,7 +32,7 @@
                 <li>{{ link_to('/index', 'Top') }}</li>
                 <li>{{ link_to('/user',  Auth::user()->name) }}</li>
                 <li>{{ link_to('/login', 'Logout') }}</li>
-                <li>{{ link_to('/post', '投稿する') }}</li>
+                @yield('post')
                 <li>{{ link_to('/tag', 'タグ') }}</li>
             </ul>
         </div>

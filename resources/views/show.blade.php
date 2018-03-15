@@ -6,6 +6,10 @@
     BBS -投稿詳細-
 @endsection
 
+@section('post')
+    <li>{{ link_to('/index/'.$post->thread->id.'/post','投稿する') }}</li>
+@endsection
+
 @section('content')
 
     @section('headline')
@@ -30,20 +34,15 @@
                 </div>
                 <div>
                     @can('edit', $post)
-                        {{ link_to_action('PostController@edit',   ' -編集-',['id' => $post->id]) }}
+                        {{ link_to_action('PostController@edit',   ' -編集-',['thread' => $post->thread->id,'post' => $post->id]) }}
 
-                        {{ Form::open(['url' => '/post/'.$post->id, 'method' => 'delete'],['class' => 'form-inline']) }}
+                        {{ Form::open(['url' => '/index/'.$post->thread->id.'/'.$post->id, 'method' => 'delete'],['class' => 'form-inline']) }}
                         <input type="submit" value="-削除-" class="delete-btn form-inline">
                         {{ Form::close() }}
                     @endcan
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            {{ link_to('/index', '投稿一覧', ['class' => 'btn btn-primary']) }}
-        </div>
-
     </div>
 
 @endsection

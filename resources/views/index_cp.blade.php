@@ -3,48 +3,21 @@
 @extends('default')
 
 @section('title')
-    BBS -マイページ-
+    BBS -投稿一覧-
+@endsection
+
+@section('post')
+    <li>{{ link_to('/index/'.$posts->first()->thread->id.'/post','投稿する') }}</li>
 @endsection
 
 @section('content')
 
     @section('headline')
-        {{ Auth::user()->name }}
+        投稿一覧
     @endsection
 
     <div class="post-list">
-        <div>
-            <table class="table table-stripedgit ">
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>ユーザID</td>
-                    <td>{{ $user->id }}</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>ユーザ名</td>
-                    <td>{{ $user->email }}</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>作成日</td>
-                    <td>{{ $user->created_at }}</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>更新日</td>
-                    <td>{{ $user->updated_at }}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="headline" style="">
-            <h2>投稿一覧</h2>
-        </div>
-
-        <!-- 投稿の表示 -->
+         <!-- 投稿の表示 -->
         @foreach($posts as $post)
             <div class="post-part">
                 <div class="post-head">
@@ -62,7 +35,7 @@
                         @endforeach
                     </div>
                     <div>
-                        {{ link_to_action('PostController@show', '詳細を見る',['thread' => $post->thread,'post' => $post->id]) }}
+                        {{ link_to_action('PostController@show', '詳細を見る',['thread' => $post->thread->id,'post' => $post->id]) }}
                     </div>
                     <div>
                         @can('edit', $post)

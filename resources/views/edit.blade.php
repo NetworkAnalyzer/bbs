@@ -13,7 +13,7 @@
     @endsection
 
      <div class="post-part">
-        {{ Form::open(['url' => '/post/'.$post->id, 'method' => 'put']) }}
+        {{ Form::open(['url' => '/index/'.$post->thread->id.'/'.$post->id, 'method' => 'put']) }}
 
             <!-- 投稿内容 -->
             <div class="form-group post-content">

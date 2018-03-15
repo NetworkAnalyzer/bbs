@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use App\Thread;
 use Illuminate\Http\Request;
 
@@ -17,16 +18,18 @@ class ThreadController extends Controller
     // 投稿一覧の表示
     public function index()
     {
-        //テーブルpostsから全レコードをIDの降順で取得する ページネーションを実装
+        // テーブルpostsから全レコードをIDの降順で取得する ページネーションを実装
         $threads = Thread::orderBy('id', 'desc')->paginate(10);
 
-        return view('thread', ['threads' => $threads]);
+        return view('index', ['threads' => $threads]);
     }
 
-    public function show($id)
+    public function show($thread)
     {
-        $posts = Thread::find($id)->posts()->orderBy('id','desc')->paginate(10);
+        $posts = Thread::find($thread)->posts()->orderBy('id','desc')->paginate(10);
 
-        return view('index',['posts' => $posts]);
+        return view('index_cp',['posts' => $posts]);
     }
+
+
 }
