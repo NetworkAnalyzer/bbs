@@ -20,17 +20,6 @@
     {{ Form::open(['method' => 'post']) }}
     {{ csrf_field() }}
 
-        <!-- ユーザ名 -->
-        <div class="form-group post-title">
-            <div class="form-headline">タイトル&nbsp;<span class="label label-danger">必須</span></div>
-            {{ Form::text('title','',['class' => 'form-control','placeholder' => 'タイトルを入力してください']) }}
-
-            {{-- error message --}}
-            @if ($errors->has('title'))
-                <span class="error-message">{{ $errors->first('title') }}</span>
-            @endif
-        </div>
-
         <!-- 投稿内容 -->
         <div class="form-group post-content">
             <div class="form-headline">投稿内容&nbsp;<span class="label label-danger">必須</span></div>
