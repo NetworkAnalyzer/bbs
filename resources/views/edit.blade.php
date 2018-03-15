@@ -37,7 +37,7 @@
                     @endforeach
                 @endif
 
-                <!-- タグ -->
+            <!-- タグ -->
                 <div class="form-group post-content">
                     <div class="form-headline">タグ&nbsp;</div>
                     {{ Form::text('tags','Tags',['id' => 'tag-input']) }}
@@ -55,9 +55,9 @@
     </div>
 
 <script type="text/javascript">
-    // タグリストはデータベースから取得して作るべき
-    // 同時にタグIDも取得してタグ名と対応させておく
-    var tagList = ["うどん", "そば","ラーメン","フォー","きしめん"];
+    var tagCsv  = "<?php echo $tag_names; ?>";
+    var tagList = tagCsv.split(',');
+
     $('#tag-input').tagit({
         removeConfirmation: true,
         availableTags: tagList
