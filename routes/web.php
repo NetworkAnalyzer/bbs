@@ -1,5 +1,8 @@
 <?php
 
+/* スレッド --------------------------------------------------------*/
+Route::get('/thread', 'ThreadController@index')->name('thread-index');
+
 /* 投稿 -----------------------------------------------------------*/
 // 投稿一覧
 Route::get('/index', 'PostController@index')->name('index');
