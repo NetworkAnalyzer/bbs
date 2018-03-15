@@ -85,7 +85,13 @@ class PostController extends Controller
 
         $tags = Tag::all();
 
-        return view('edit',['post' => $post,'tags' => $tags]);
+        // 補完用
+        foreach ($tags as $tag){
+            $tag_names[] = $tag->name;
+        }
+        $tag_names = implode(",",$tag_names);   //jsに渡すために配列をCSVに変換
+
+        return view('edit',['post' => $post,'tags' => $tags,'tag_names' => $tag_names]);
     }
 
     // 編集結果をデータベースに保存

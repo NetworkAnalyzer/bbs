@@ -40,7 +40,7 @@
             <!-- タグ -->
                 <div class="form-group post-content">
                     <div class="form-headline">タグ&nbsp;</div>
-                    {{ Form::text('tags','Tags',['id' => 'tag-input']) }}
+                    {{ Form::text('tags','',['id' => 'tag-input']) }}
                 </div>
 
             </div>
