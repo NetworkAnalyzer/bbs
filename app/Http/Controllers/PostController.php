@@ -39,7 +39,7 @@ class PostController extends Controller
         $tags = $request->get('tags');      // 文字列だから
         $tags = explode(",", $tags);    // 配列に変換
 
-        // 既存かどうか確認
+        // タグ名をタグIDに変換
         foreach ($tags as $tag){
             // タグが存在すれば取得し，存在しなければタグを登録する
             $ids[] = Tag::firstOrCreate(['name' => $tag])->id;
@@ -61,7 +61,7 @@ class PostController extends Controller
         $post->tags()->attach($ids);
 
         // 投稿一覧に戻る
-        return redirect()->route('index');
+        return redirect()->route('post',['thread' => $post->thread]);
     }
 
     // 投稿詳細の表示
@@ -85,11 +85,10 @@ class PostController extends Controller
     // 編集結果をデータベースに保存
     public function update(Request $request, $id)
     {
-
         $request->validate([
             'content' => 'required|max:255',
         ]);
-
+        
         $post = Post::find($id);
         // user_idは更新しない
         $post->content  = $request->get('content');
@@ -103,7 +102,7 @@ class PostController extends Controller
         $post->tags()->sync($tags);
 
         // 投稿一覧に戻る
-        return redirect()->route('index');
+        return redirect()->route('post',['thread' => $post->thread]);
     }
 
     // 投稿の削除
@@ -117,6 +116,6 @@ class PostController extends Controller
         // 投稿の削除
         $post->delete();
 
-        return redirect()->route('index');
+        return redirect()->route('post',['thread' => $post->thread]);
     }
 }
