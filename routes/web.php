@@ -46,3 +46,10 @@ Route::get('/user','UserController@index')->name('user');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/* Blog -----------------------------------------------------------*/
+Route::get('/blog-index', 'BlogController@index');
+Route::get('/blog-index/{thread}', 'BlogController@show');
+
+Route::get('/blog-post', 'BlogController@create');
+Route::get('/blog-tag', 'BlogController@tag');
