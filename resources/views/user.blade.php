@@ -46,7 +46,7 @@
         </div>
 
         <div class="headline" style="">
-            <h2>投稿一覧</h2>
+            <h2>投稿数：{{ count($user->posts) }}</h2>
         </div>
 
         <!-- 投稿の表示 -->
