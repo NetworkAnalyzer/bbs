@@ -13,7 +13,7 @@
 @endsection
 
 <div class="form-group">
-    {{ link_to('/index', 'タグ一覧', ['class' => 'btn btn-primary']) }}
+    {{ link_to('/edit', 'タグ一覧', ['class' => 'btn btn-primary']) }}
 </div>
 
 <div class="post-part">
