@@ -6,6 +6,10 @@
     BBS -マイページ-
 @endsection
 
+@section('post')
+    <li>{{ link_to('/index/'.$posts->first()->thread->id.'/post','投稿する') }}</li>
+@endsection
+
 @section('content')
 
     @section('headline')
