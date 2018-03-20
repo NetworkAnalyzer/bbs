@@ -2,6 +2,16 @@
 
 @extends('default')
 
+@section('js_for_table')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#js-table').DataTable();
+        });
+    </script>
+@endsection
+
 @section('title')
     BBS -タグ一覧-
 @endsection
@@ -18,7 +28,7 @@
 
 <div class="post-list">
     <!-- 投稿の表示 -->
-    <table class="table table-stripedgit ">
+    <table class="table table-stripedgit" id="js-table">
         <thead>
         <tr>
             <th></th>

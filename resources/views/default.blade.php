@@ -12,11 +12,13 @@
 
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ asset('/js/jquery-2.2.4.js') }}" type="text/javascript" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="{{ asset('/js/tag-it.js') }}" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
     <link href="{{ asset('/css/jquery.tagit.css') }}" rel="stylesheet" type="text/css">
+
+    @yield('js_for_table')
 
     <title>@yield('title')</title>
 </head>
