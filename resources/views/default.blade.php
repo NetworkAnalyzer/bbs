@@ -9,16 +9,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
 
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
-    <script src="{{ asset('/js/jquery-2.2.4.js') }}" type="text/javascript" charset="utf-8"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ asset('/js/tag-it.js') }}" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
-    <link href="{{ asset('/css/jquery.tagit.css') }}" rel="stylesheet" type="text/css">
-
-    @yield('js_for_table')
+    {{--各ページで必要なjsだけ読み込む--}}
+    @yield('js')
 
     <title>@yield('title')</title>
 </head>

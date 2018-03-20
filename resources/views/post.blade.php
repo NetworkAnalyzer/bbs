@@ -2,6 +2,14 @@
 
 @extends('default')
 
+@section('js')
+    <script src="https://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ asset('/js/tag-it.js') }}" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+    <link href="{{ asset('/css/jquery.tagit.css') }}" rel="stylesheet" type="text/css">
+@endsection
+
 @section('title')
     BBS -新規投稿-
 @endsection

@@ -2,12 +2,32 @@
 
 @extends('default')
 
-@section('js_for_table')
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+
     <script>
         $(document).ready(function(){
-            $('#js-table').DataTable();
+            // 日本語化
+            $.extend( $.fn.dataTable.defaults, {
+                language: {
+                    url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
+                }
+            });
+
+            $('#js-table').DataTable({
+                // 件数切替機能 無効
+                lengthChange: false,
+                columnDefs: [
+                    { "orderable": false, "targets": [0,2,4] }
+                ]
+
+
+            });
+
         });
     </script>
 @endsection
