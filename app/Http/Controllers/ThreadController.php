@@ -28,7 +28,7 @@ class ThreadController extends Controller
     {
         $posts = Thread::find($thread)->posts()->orderBy('id','desc')->paginate(10);
 
-        return view('index_cp',['posts' => $posts]);
+        return view('index_cp',['posts' => $posts, 'thread' => $thread]);
     }
 
 
