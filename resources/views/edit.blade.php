@@ -55,7 +55,7 @@
     </div>
 
 <script type="text/javascript">
-    var tagCsv  = "<?php echo $tag_names; ?>";
+    var tagCsv  = "<?php echo $tagNames; ?>";
     var tagList = tagCsv.split(',');
 
     $('#tag-input').tagit({
