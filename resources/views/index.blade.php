@@ -22,7 +22,7 @@
         <div class="post-part">
             <div class="post-head">
                 {{-- ユーザ名とユーザIDを表示する --}}
-                {{ link_to('/index/'.$thread->id,$thread->name,['class' => 'post-head-left']) }}
+                {{ link_to('/index/' . $thread->id, $thread->name, ['class' => 'post-head-left']) }}
                 <span class="post-head-right">{{ $thread->created_at }}</span>
             </div>
         </div>

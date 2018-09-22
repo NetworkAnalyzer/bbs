@@ -11,7 +11,6 @@ class ThreadController extends Controller
 {
     public function __construct()
     {
-        // ログインしないとスレッドを見られないようにする
         $this->middleware('auth');
     }
 
@@ -19,14 +18,14 @@ class ThreadController extends Controller
     {
         $threads = Thread::orderBy('id', 'desc')->paginate(10);
 
-        return view('index', ['threads' => $threads]);
+        return view('index', compact('threads'));
     }
 
-    public function show($thread)
+    public function show(Thread $thread)
     {
-        $posts = Thread::find($thread)->posts()->orderBy('id','desc')->paginate(10);
+        $posts = $thread->posts()->orderBy('id', 'desc')->paginate(10);
 
-        return view('index_cp',['posts' => $posts, 'thread' => $thread]);
+        return view('index_cp', compact('posts', 'thread'));
     }
 
 
