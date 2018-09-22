@@ -11,33 +11,33 @@ Route::get('/index/{thread}/post', 'PostController@create')->name('post.create')
 Route::post('/index/{thread}/post', 'PostController@store')->name('post.store');
 
 // 投稿詳細
-Route::get('/index/{thread}/{post}', 'PostController@show');
+Route::get('/index/{thread}/{post}', 'PostController@show')->name('post.show');
 
 // 投稿の編集
 Route::get('/index/{thread}/{post}/edit','PostController@edit');
 Route::put('/index/{thread}/{post}','PostController@update');
 
 // 投稿の削除
-Route::delete('/index/{thread}/{post}','PostController@destroy');
+Route::delete('/index/{thread}/{post}','PostController@destroy')->name('post.delete');
 
 /* タグ -----------------------------------------------------------*/
 
 // タグ一覧
-Route::get('/tag','TagController@index')->name('tag-index');
+Route::get('/tag','TagController@index')->name('tag.index');
 
 // タグ検索
-Route::get('/tag/{id}','TagController@show');
+Route::get('/tag/{tag}','TagController@show');
 
 // タグ作成
 Route::get('/tag-create','TagController@create');
 Route::post('/tag-create','TagController@store');
 
 // タグ編集
-Route::get('/tag/{id}/edit','TagController@edit');
-Route::put('/tag/{id}','TagController@update');
+Route::get('/tag/{tag}/edit','TagController@edit');
+Route::put('/tag/{tag}','TagController@update');
 
 // タグ削除
-Route::delete('/tag/{id}','TagController@destroy');
+Route::delete('/tag/{tag}','TagController@destroy')->name('tag.delete');
 
 // マイページ
 Route::get('/user','UserController@index')->name('user');

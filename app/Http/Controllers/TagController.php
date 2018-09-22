@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateTag;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TagController extends Controller
 {
@@ -17,15 +19,14 @@ class TagController extends Controller
     {
         $tags = Tag::all();
 
-        return view('tag.index',['tags' => $tags]);
+        return view('tag.index', compact('tags'));
     }
 
-    public function show($tag)
+    public function show(Tag $tag)
     {
-        $posts = Tag::find($tag)->posts()->paginate(10);
-        $tag = Tag::find($tag);
+        $posts = $tag->posts()->paginate(10);
 
-        return view('tag.show',['posts' => $posts,'tag' => $tag]);
+        return view('tag.show', compact('posts', 'tag'));
     }
 
     public function create()
@@ -33,43 +34,54 @@ class TagController extends Controller
         return view('tag.create');
     }
 
-    public function store(Request $request)
+    public function store(CreateTag $request)
     {
-        $request->validate([
-            'name' => 'bail|required|max:16|unique:tags',
-        ]);
+        try {
 
-        $tag = new Tag;
-        $tag->name = $request->name;
-        $tag->save();
+            DB::beginTransaction();
+
+            $tag = new Tag;
+            $tag->name = $request->get('name');
+            $tag->save();
+
+            DB::commit();
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+
+        }
 
         return redirect()->route('tag.index');
     }
 
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        $tag = Tag::find($id);
-
-        return view('tag.edit',['tag' => $tag]);
+        return view('tag.edit', compact('tag'));
     }
 
-    public function update(Request $request,$id)
+    public function update(CreateTag $request, Tag $tag)
     {
-        $request->validate([
-            'name' => 'bail|required|max:16|unique:tags',
-        ]);
+        try {
 
-        $tag = Tag::find($id);
-        $tag->name = $request->name;
-        $tag->save();
+            DB::beginTransaction();
+
+            $tag->name = $request->get('name');
+            $tag->save();
+
+            DB::commit();
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+
+        }
 
         return redirect()->route('tag.index');
     }
 
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        $tag = Tag::find($id);
-
         $tag->posts()->detach();
         $tag->delete();
 

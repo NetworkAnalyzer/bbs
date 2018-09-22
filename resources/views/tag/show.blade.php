@@ -9,7 +9,7 @@
 @section('content')
 
 @section('headline')
-    {{ Form::label('tag-title',$tag->name,['class' => 'label label-default']) }}
+    {{ Form::label('tag-title', $tag->name, ['class' => 'label label-default']) }}
 @endsection
 
 <div class="post-list">
@@ -36,17 +36,17 @@
                 <div class="post-footer form-inline">
                     <div>
                         @foreach($post->tags as $tag)
-                            {{ link_to('/tag/'.$tag->id,$tag->name,['tag' => $tag,'class' => 'label label-default']) }}
+                            {{ link_to('/tag/' . $tag->id, $tag->name, ['tag' => $tag, 'class' => 'label label-default']) }}
                         @endforeach
                     </div>
                     <div>
-                        {{ link_to_action('PostController@show', '詳細を見る',['thread' => $post->thread,'post' => $post->id]) }}
+                        {{ link_to_action('PostController@show', '詳細を見る', ['thread' => $post->thread, 'post' => $post->id]) }}
                     </div>
                     <div>
                         @can('edit', $post)
-                            {{ link_to_action('PostController@edit',   ' -編集-',['thread' => $post->thread->id,'post' => $post->id]) }}
+                            {{ link_to_action('PostController@edit', ' -編集-', ['thread' => $post->thread->id, 'post' => $post->id]) }}
 
-                            {{ Form::open(['url' => '/index/'.$post->thread->id.'/'.$post->id, 'method' => 'delete'],['class' => 'form-inline']) }}
+                            {{ Form::open(['url' => route('post.delete', ['thread' => $post->thread->id, 'post' => $post->id]), 'method' => 'delete'], ['class' => 'form-inline']) }}
                             <input type="submit" value="-削除-" class="delete-btn form-inline">
                             {{ Form::close() }}
                         @endcan
