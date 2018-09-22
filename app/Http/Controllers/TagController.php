@@ -7,13 +7,12 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    // ログインしないと入れないようにする
     public function __construct()
     {
+        // ログインしないとタグを見れないようにする
         $this->middleware('auth');
     }
 
-    // タグ一覧の表示
     public function index()
     {
         $tags = Tag::all();
@@ -71,10 +70,7 @@ class TagController extends Controller
     {
         $tag = Tag::find($id);
 
-        // タグを外す
         $tag->posts()->detach();
-
-        // タグを削除
         $tag->delete();
 
         return redirect()->route('tag.index');

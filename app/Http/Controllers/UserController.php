@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    // ログインしないと入れないようにする
     public function __construct()
     {
+        // ログインしないとユーザを見れないようにする
         $this->middleware('auth');
     }
 
